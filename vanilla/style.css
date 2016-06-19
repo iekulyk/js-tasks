@@ -1,0 +1,61 @@
+/*TODO: text wrapping*/
+*{
+    box-sizing: content-box;
+}
+
+body{
+    width: 600px;        
+    margin: 8px auto;
+}
+
+li,ul{
+    padding: 0;
+}
+
+.container{
+    padding: 8px;
+    font-family: 'Roboto', sans-serif;        
+         
+}
+
+.section{
+box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+ padding: 8px;
+}
+
+.error{
+    border: solid red 1px;
+}
+
+.list{
+    list-style-type: none; 
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.list > li:nth-child(even){
+    background-color: #FFF176;
+}
+
+.task{
+    position: relative;    
+}
+
+.text{
+    margin: 8px;
+    display: inline-block;
+    white-space: nowrap;    
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 90%;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.text-button{
+    position: absolute;
+    margin: 0 8px;
+    right:0;
+    line-height: 36px;
+}

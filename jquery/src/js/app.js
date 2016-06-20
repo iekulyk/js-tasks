@@ -1,11 +1,6 @@
-var TasksBoard = (function ($, doc, storage, validator) {
+var TasksBoard = (function ($) {
     var TasksBoard = {};
     var self = TasksBoard;
-
-    var option = {
-        listSelector: '',
-        inputSelector: ''
-    }
 
     var $taskInput, $tasksList;
 
@@ -45,4 +40,4 @@ var TasksBoard = (function ($, doc, storage, validator) {
     }
 
     return TasksBoard;
-})($, document, localStorage)
+})(this.$)

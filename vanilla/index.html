@@ -11,19 +11,39 @@
 <body>
 
     <div class="container">
-        <div class="section">
-            <label for="task-text">Please Enter Task Name : </label>
-            <input id="task-text" required type="text" class="input add-task" placeholder="Task text here">
+
+        <div class="top-board">
+            <div class="section">
+                <label>Please Enter Task Name : </label>
+                <input required type="text" class="input add-task" placeholder="Task text here">
+            </div>
+
+            <div>
+                <ul class="list tasks"></ul>
+            </div>
+
         </div>
 
-        <div>
-            <ul class="list tasks"></ul>
+        <div class="bottom-board">
+            <div class="section">
+                <label>Please Enter Task Name : </label>
+                <input required type="text" class="input add-task" placeholder="Task text here">
+            </div>
+
+            <div>
+                <ul class="list tasks"></ul>
+            </div>
+
         </div>
-        
+
     </div>
 
 
-    <script src="index.js"></script>
+    <script src="taskBoard.js"></script>
+    <script>
+        taskBoard.create('.top-board');
+        taskBoard.create('.bottom-board');
+    </script>
 </body>
 
 </html>

@@ -1,43 +1,44 @@
-var TasksBoard = (function ($) {
+var TasksBoard = (function () {
     var TasksBoard = {};
     var self = TasksBoard;
 
-    var $taskInput, $tasksList;
-
     self.init = function (options) {
-        $taskInput = $(options.inputSelector);
-        $tasksList = $(options.listSelector);
+        var $component, $taskInput, $tasksList;
 
-        $(options.inputSelector).keypress(self.addTaskHandler);
-        $(options.listSelector).on('click', '[data-action="remove-task"]', self.removeTaskHandler)
-    }
+        $component = $(options.rootSelector);
+        $taskInput = $component.find(options.inputSelector);
+        $tasksList = $component.find(options.listSelector);
 
-    self.addTaskHandler = function (e) {
-        if (e.keyCode == 13 && _validateInputText()) {
-            var text = $taskInput.val();
-            var taskTemplate = '<li class="list-group-item"><span data-action="remove-task" class="badge">X</span>' + text + '</li>';
-            $tasksList.append(taskTemplate);
-            $taskInput.val('');
-        }
-    }
+        $taskInput.keypress(addTaskHandler);
+        $tasksList.on('click', '[data-action="remove-task"]', removeTaskHandler);
 
-    self.removeTaskHandler = function (e) {
-        e.currentTarget.parentElement.remove();
-    }
-
-    function _validateInputText() {
-        $taskInput.toggleClass('input-error', false);
-        $taskInput.attr('title', '');
-        if ($taskInput.val().length == 0) {
-            $taskInput.toggleClass('input-error', true);
-            $taskInput.attr('title', '* Please Fill Out This Field.');
-            $taskInput.tooltip('show');
-            return false
+        function addTaskHandler(e) {
+            if (e.keyCode == 13 && _validateInputText()) {
+                var text = $taskInput.val();
+                var taskTemplate = '<li class="list-group-item"><span data-action="remove-task" class="badge">X</span>' + text + '</li>';
+                $tasksList.append(taskTemplate);
+                $taskInput.val('');
+            }
         }
 
-        $taskInput.tooltip('destroy');
-        return true;
-    }
+        function removeTaskHandler(e) {
+            e.currentTarget.parentElement.remove();
+        }
+
+        function _validateInputText() {
+            $taskInput.toggleClass('input-error', false);
+            $taskInput.attr('title', '');
+            if ($taskInput.val().length == 0) {
+                $taskInput.toggleClass('input-error', true);
+                $taskInput.attr('title', '* Please Fill Out This Field.');
+                $taskInput.tooltip('show');
+                return false;
+            }
+
+            $taskInput.tooltip('destroy');
+            return true;
+        }
+    };
 
     return TasksBoard;
-})(this.$)
+})();
